@@ -51,3 +51,21 @@ Tri | Tb/s
 * End Devices
 	* is uniquely identified by assigned IP
 	* When host init, network used addr of des to spec how the message should be sent
+# Week 2
+* Mobile Telephones
+	* use radio waves to transmit voice signals from towers in specific location
+	* called as cell phone because the operation range of them is the area that is covered by a signal from individual singal called as a 'cell'. 
+	* the cells are relayed from one tower to another tower until it is reached to its destination (wired, wireless).
+	* most common type is called GSM - “Global System for Mobile Communications”.
+	* some enhancement were made to cell radio transmitters 3G, 4G. 'G' stand for 'generation'
+* Different types of networks
+	* GPS
+	* Wifi
+	* Bluetooth
+	* NFC
+* Networking Components
+	* Host (Directly involve in sending and receiving data across net)
+	* Peripherals (do not directly connect to networks)
+	* Network devices/ intermediate
+	* Network media
+
