@@ -35,7 +35,7 @@ Tri | Tb/s
 		* > The types of data being transmitted
 		* > The latency created by the number of network devices encountered between source and destination
 		* > Latency refers to the amount of time, including delays, for data to travel from one given point to another.
-	* Notice that it **will not ignore the validity and usefulness of data** which being transmmitted and received
+	* Notice that it **will ignore the validity and usefulness of data** which being transmmitted and received
 	* Many data which received from the networks are destined for specific 'host'
 	* In internetworks or multiple-segmented network, if a segment with a lower bandwidth and others are high ones, it will slowdown at the lower bandwith segment and cause the whole slowdown in entire network -> Throughput cannot be faster than the slowest link.
 * Clients and Servers
