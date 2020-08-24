@@ -1,0 +1,140 @@
+exit
+telnet ip-addr
+SSH -l username target
+
+> MODE
+show
+en
+
+# MODE
+reload
+conf
+S1# show ip interface brief
+show running-config 
+show startup-config
+
+conf MODE
+
+Enter interface configuration mode for VLAN 1.
+Switch(config)# 
+interface vlan 1
+Configure the IP address as '192.168.10.2' and the subnet mask as 
+'255.255.255.0'.
+
+ip default-gateway 192.168.10.1
+
+ip domain-name
+
+
+  Configure the hostname as S1.
+
+Switch(config)# hostname S1
+
+
+exit to global config mode (# mode)
+S1(config)# end
+
+ MOTD
+
+S1(config)# banner motd "Authorized access only. Violators will be prosecuted to the full extent of the law."
+
+
+
+
+
+con-if MODE
+
+interface
+
+Switch(config-if)# 
+
+ip address 192.168.10.2 255.255.255.0
+
+Activate the interface.
+Switch(config-if)# no shutdown
+
+
+
+
+# Security
+ Configure cisco as the console password and enable login.
+
+S1(config)# line console 0
+
+S1(config-line)# password cisco
+
+S1(config-line)# login
+
+S1(config-line)# exit
+
+Use class for the encrypted privileged EXEC mode password.
+
+S1(config)# enable secret class
+
+#Save the configuration file to NVRAM.
+
+S1# copy running-config startup-config
+
+
+
+Enter the global configuration mode to configure the name of the router as 'R1'.
+Router> 
+enable
+Router# configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)# hostname R1
+Configure 'class' as the secret password.
+R1(config)# enable secret class
+Configure 'cisco' as the console line password and require users to login.
+R1(config)# line console 0
+R1(config-line)# password cisco
+R1(config-line)# login
+Configure 'cisco' as the vty password for lines 0 through 4 and require users to login. Then exit line configuration mode.
+R1(config-line)# line vty 0 4
+R1(config-line)# password cisco
+R1(config-line)# login
+R1(config-line)# exit
+Encrypt all clear text passwords.
+R1(config)# service password-encryption
+Enter the banner 'Authorized Access Only!' and use # as the delimiting character.
+R1(config)# banner motd #Authorized Access Only!#
+Exit global configuration mode.
+R1(config)# exit
+R1#
+You successfully configured R1 with initial settings.
+
+
+
+#SSH
+
+
+Set the domain name to cisco.com and generate the 1024 bit rsa key.
+S1(config)# 
+ip domain-name cisco.com
+S1(config)# crypto key generate rsa
+The name for the keys will be: S1.cisco.com 
+Choose the size of the key modulus in the range of 360 to 4096 for your General Purpose Keys. Choosing a key modulus greater than 512 may take a few minutes. 
+ 
+How many bits in the modulus [512]: 1024
+% Generating 1024 bit RSA keys, keys will be non-exportable... 
+[OK] (elapsed time was 4 seconds) 
+ 
+S1(config)# 
+*Mar 1 02:20:18.529: %SSH-5-ENABLED: SSH 1.99 has been enabled 
+Create a local user 'admin' with the password 'ccna'. Set all vty lines to use ssh and local login for remote connections. Exit out to global configuration mode.
+S1(config)# username admin secret ccna
+S1(config)# line vty 0 15
+S1(config-line)# transport input ssh
+S1(config-line)# login local
+S1(config-line)# exit
+S1(config)#
+%SYS-5-CONFIG_I: Configured from console by console
+Configure S1 to use SSH 2.0.
+S1(config)# ip ssh version 2
+S1(config)#
+You successfully configured SSH on all VTY lines
+
+ Remove the existing vty line password.
+no password `currentpwd`
+
+
